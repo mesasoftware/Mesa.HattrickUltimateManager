@@ -1,0 +1,22 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".github/workflows/debug.yml" />
+    <File Path=".github/workflows/release.yml" />
+    <File Path=".gitignore" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Mesa.HUM.Application/Mesa.HUM.Application.csproj" Id="e8fb66e6-b158-43ef-b6ac-9716ecd68521" />
+    <Project Path="src/Mesa.HUM.Domain/Mesa.HUM.Domain.csproj" Id="7191e074-5b1c-4cae-8a80-9b17bb047ce4" />
+    <Project Path="src/Mesa.HUM.Infrastructure/Mesa.HUM.Infrastructure.csproj" Id="37faf68b-ba73-4a38-bf6b-7ae57402eb2c" />
+    <Project Path="src/Mesa.HUM.Presentation/Mesa.HUM.Presentation.csproj" Id="1196f124-5b02-4213-a136-149b83d835bc" />
+    <Project Path="src/Mesa.HUM.UI.Desktop/Mesa.HUM.UI.Desktop.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Mesa.HUM.Application.Tests/Mesa.HUM.Application.Tests.csproj" Id="c747135a-4a6b-4829-a640-d594ca386766" />
+    <Project Path="tests/Mesa.HUM.Domain.Tests/Mesa.HUM.Domain.Tests.csproj" Id="dacc87f0-5aaa-4a1a-b99a-9dffbff51695" />
+    <Project Path="tests/Mesa.HUM.Infrastructure.Tests/Mesa.HUM.Infrastructure.Tests.csproj" Id="890fbbd9-78b4-49b4-87d7-0238a8409389" />
+    <Project Path="tests/Mesa.HUM.Presentation.Tests/Mesa.HUM.Presentation.Tests.csproj" Id="33de645a-69fb-4af1-b6f0-9f3f7b5d2b61" />
+    <Project Path="tests/Mesa.HUM.UI.Desktop.Tests/Mesa.HUM.UI.Desktop.Tests.csproj" Id="338bce02-dd8d-4159-b40d-2b8990f6b356" />
+  </Folder>
+</Solution>
