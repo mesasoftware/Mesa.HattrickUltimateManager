@@ -1,6 +1,8 @@
 <Solution>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
+    <File Path=".github/workflows/debug.yml" />
+    <File Path=".github/workflows/release.yml" />
     <File Path=".gitignore" />
   </Folder>
   <Folder Name="/src/">
