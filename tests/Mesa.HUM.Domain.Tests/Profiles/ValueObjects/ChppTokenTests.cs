@@ -3,7 +3,6 @@
     using System;
     using Mesa.HUM.Domain.Profiles.Enums;
     using Mesa.HUM.Domain.Profiles.ValueObjects;
-    using Microsoft.VisualStudio.TestPlatform.ObjectModel.Utilities;
 
     public class ChppTokenTests
     {

@@ -1,10 +1,16 @@
 ﻿namespace Mesa.HUM.Domain.Profiles.ValueObjects
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using Mesa.HUM.Domain.Profiles.Enums;
 
     public sealed record ChppToken
     {
+#pragma warning disable CS8618
+        [ExcludeFromCodeCoverage]
+        private ChppToken ( ) { }
+#pragma warning restore CS8618
+
         public ChppToken (
             string token ,
             string tokenSecret ,

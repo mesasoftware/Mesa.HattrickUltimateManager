@@ -1,9 +1,7 @@
 namespace Mesa.HUM.UI.Desktop
 {
-    using System.Linq;
     using Avalonia;
     using Avalonia.Controls.ApplicationLifetimes;
-    using Avalonia.Data.Core.Plugins;
     using Avalonia.Markup.Xaml;
     using Mesa.HUM.Application.ExtensionMethods.HostBuilder;
     using Mesa.HUM.Infrastructure.ExtensionMethods.HostBuilder;
@@ -30,6 +28,8 @@ namespace Mesa.HUM.UI.Desktop
                 .AddApplicationDependencies ( )
                 .AddInfrastructureDependencies ( )
                 .Build ( );
+
+            _host.ApplyMigrations ( );
 
             if ( ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop )
             {
