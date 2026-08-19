@@ -25,10 +25,10 @@ namespace Mesa.HUM.UI.Desktop
         public override void OnFrameworkInitializationCompleted ( )
         {
             _host = Host.CreateDefaultBuilder ( )
-                .AddDesktopUIDepencencies ( )
-                .AddPresentationDepencencies ( )
-                .AddApplicationDepencencies ( )
-                .AddInfrastructureDepencencies ( )
+                .AddDesktopUIDependencies ( )
+                .AddPresentationDependencies ( )
+                .AddApplicationDependencies ( )
+                .AddInfrastructureDependencies ( )
                 .Build ( );
 
             if ( ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop )

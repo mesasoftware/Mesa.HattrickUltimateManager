@@ -4,7 +4,7 @@
 
     public static class DependencyInjectionExtensionMethods
     {
-        public static IHostBuilder AddPresentationDepencencies ( this IHostBuilder hostBuilder )
+        public static IHostBuilder AddPresentationDependencies ( this IHostBuilder hostBuilder )
         {
             return hostBuilder;
         }

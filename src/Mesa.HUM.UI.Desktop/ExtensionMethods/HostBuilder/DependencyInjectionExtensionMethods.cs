@@ -4,7 +4,7 @@
 
     public static class DependencyInjectionExtensionMethods
     {
-        public static IHostBuilder AddDesktopUIDepencencies ( this IHostBuilder hostBuilder )
+        public static IHostBuilder AddDesktopUIDependencies ( this IHostBuilder hostBuilder )
         {
             return hostBuilder;
         }
