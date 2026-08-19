@@ -17,6 +17,7 @@
     <Project Path="tests/Mesa.HUM.Domain.Tests/Mesa.HUM.Domain.Tests.csproj" Id="dacc87f0-5aaa-4a1a-b99a-9dffbff51695" />
     <Project Path="tests/Mesa.HUM.Infrastructure.Tests/Mesa.HUM.Infrastructure.Tests.csproj" Id="890fbbd9-78b4-49b4-87d7-0238a8409389" />
     <Project Path="tests/Mesa.HUM.Presentation.Tests/Mesa.HUM.Presentation.Tests.csproj" Id="33de645a-69fb-4af1-b6f0-9f3f7b5d2b61" />
+    <Project Path="tests/Mesa.HUM.Tests.Shared/Mesa.HUM.Tests.Shared.csproj" Id="98db6050-95a5-458f-b45e-510488604778" />
     <Project Path="tests/Mesa.HUM.UI.Desktop.Tests/Mesa.HUM.UI.Desktop.Tests.csproj" Id="338bce02-dd8d-4159-b40d-2b8990f6b356" />
   </Folder>
 </Solution>

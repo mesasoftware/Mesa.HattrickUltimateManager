@@ -27,6 +27,9 @@ dotnet_search_reference_assemblies = true
 
 #### .NET Coding Conventions ####
 
+# Prefer explicit type over target-typed new
+csharp_style_prefer_target_typed_new = false:suggestion
+
 # Organize usings
 dotnet_separate_import_directive_groups = false
 dotnet_sort_system_directives_first = true
