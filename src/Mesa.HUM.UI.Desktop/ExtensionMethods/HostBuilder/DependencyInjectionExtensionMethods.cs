@@ -8,13 +8,13 @@
     [ExcludeFromCodeCoverage]
     public static class DependencyInjectionExtensionMethods
     {
-        public static IHostBuilder AddDesktopUIDependencies ( this IHostBuilder hostBuilder )
+        public static IHostBuilder RegisterDesktopUIDependencies ( this IHostBuilder hostBuilder )
         {
             return hostBuilder
-                .AddConfiguration ( );
+                .RegisterConfiguration ( );
         }
 
-        private static IHostBuilder AddConfiguration ( this IHostBuilder hostBuilder )
+        private static IHostBuilder RegisterConfiguration ( this IHostBuilder hostBuilder )
         {
             return hostBuilder.ConfigureAppConfiguration ( ( context , configurationBuilder ) =>
             {

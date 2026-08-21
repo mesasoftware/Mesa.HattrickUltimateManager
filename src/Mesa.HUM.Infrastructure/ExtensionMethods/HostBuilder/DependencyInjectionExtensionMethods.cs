@@ -12,14 +12,14 @@
     [ExcludeFromCodeCoverage]
     public static class DependencyInjectionExtensionMethods
     {
-        public static IHostBuilder AddInfrastructureDependencies ( this IHostBuilder hostBuilder )
+        public static IHostBuilder RegisterInfrastructureDependencies ( this IHostBuilder hostBuilder )
         {
-            return hostBuilder.ConfigureServices ( ( context , services )
-                => services
-                    .AddDatabase ( context.Configuration ) );
+            return hostBuilder.ConfigureServices (
+                ( context , services ) => services
+                    .RegisterDatabase ( context.Configuration ) );
         }
 
-        private static IServiceCollection AddDatabase ( this IServiceCollection services , IConfiguration configuration )
+        private static IServiceCollection RegisterDatabase ( this IServiceCollection services , IConfiguration configuration )
         {
             string? connectionStringSetting = configuration.GetConnectionString ( "Database" );
 

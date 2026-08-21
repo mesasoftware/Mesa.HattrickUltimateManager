@@ -6,7 +6,7 @@
     [ExcludeFromCodeCoverage]
     public static class DependencyInjectionExtensionMethods
     {
-        public static IHostBuilder AddPresentationDependencies ( this IHostBuilder hostBuilder )
+        public static IHostBuilder RegisterPresentationDependencies ( this IHostBuilder hostBuilder )
         {
             return hostBuilder;
         }

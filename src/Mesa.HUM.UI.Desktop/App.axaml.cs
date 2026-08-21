@@ -23,10 +23,10 @@ namespace Mesa.HUM.UI.Desktop
         public override void OnFrameworkInitializationCompleted ( )
         {
             _host = Host.CreateDefaultBuilder ( )
-                .AddDesktopUIDependencies ( )
-                .AddPresentationDependencies ( )
-                .AddApplicationDependencies ( )
-                .AddInfrastructureDependencies ( )
+                .RegisterDesktopUIDependencies ( )
+                .RegisterPresentationDependencies ( )
+                .RegisterApplicationDependencies ( )
+                .RegisterInfrastructureDependencies ( )
                 .Build ( );
 
             _host.ApplyMigrations ( );
