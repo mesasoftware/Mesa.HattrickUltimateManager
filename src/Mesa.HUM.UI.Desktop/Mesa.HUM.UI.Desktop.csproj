@@ -8,6 +8,7 @@
         <Nullable>enable</Nullable>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <UserSecretsId>5090dcd0-7799-466a-b658-954026566e9d</UserSecretsId>
 
     </PropertyGroup>
 

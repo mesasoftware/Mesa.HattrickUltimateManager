@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Mesa.HUM.UI.Desktop": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

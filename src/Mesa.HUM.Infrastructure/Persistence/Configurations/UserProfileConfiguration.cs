@@ -21,10 +21,6 @@
         public override void MapIndices ( EntityTypeBuilder<UserProfile> builder )
         {
             base.MapIndices ( builder );
-
-            builder
-                .HasIndex ( x => x.Id )
-                .IsUnique ( true );
         }
 
         public override void MapKey ( EntityTypeBuilder<UserProfile> builder )
@@ -42,28 +38,24 @@
                     chppToken
                         .Property ( t => t.Token )
                         .HasColumnType ( DataTypes.Text )
-                        .HasMaxLength ( 36 )
                         .IsFixedLength ( true )
                         .IsRequired ( true );
 
                     chppToken
                         .Property ( t => t.TokenSecret )
                         .HasColumnType ( DataTypes.Text )
-                        .HasMaxLength ( 36 )
                         .IsFixedLength ( true )
                         .IsRequired ( true );
 
                     chppToken
                         .Property ( t => t.ObtainedAt )
                         .HasColumnType ( DataTypes.Text )
-                        .HasMaxLength ( 23 )
                         .IsFixedLength ( true )
                         .IsRequired ( true );
 
                     chppToken
                         .Property ( t => t.ExpiresAt )
                         .HasColumnType ( DataTypes.Text )
-                        .HasMaxLength ( 23 )
                         .IsFixedLength ( true )
                         .IsRequired ( true );
                 } );
@@ -77,7 +69,6 @@
                 .HasConversion (
                     id => id.Value ,
                     value => new ProfileId ( value ) )
-                .HasMaxLength ( 36 )
                 .IsFixedLength ( true )
                 .IsRequired ( true )
                 .ValueGeneratedNever ( );
@@ -85,7 +76,6 @@
             builder
                 .Property ( x => x.SynchronizedAt )
                 .HasColumnType ( DataTypes.Text )
-                .HasMaxLength ( 23 )
                 .IsFixedLength ( true )
                 .IsRequired ( false );
         }

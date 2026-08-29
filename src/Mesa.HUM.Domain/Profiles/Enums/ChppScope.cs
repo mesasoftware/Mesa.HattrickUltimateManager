@@ -1,5 +1,8 @@
 ﻿namespace Mesa.HUM.Domain.Profiles.Enums
 {
+    using System;
+
+    [Flags]
     public enum ChppScope
     {
         /// <summary>

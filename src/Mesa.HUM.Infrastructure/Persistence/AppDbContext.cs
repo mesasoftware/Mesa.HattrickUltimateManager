@@ -1,8 +1,10 @@
 ﻿namespace Mesa.HUM.Infrastructure.Persistence
 {
+    using System.Diagnostics.CodeAnalysis;
     using Mesa.HUM.Domain.Profiles;
     using Microsoft.EntityFrameworkCore;
 
+    [ExcludeFromCodeCoverage]
     internal class AppDbContext : DbContext
     {
         public AppDbContext ( DbContextOptions options ) : base ( options )

@@ -2,6 +2,8 @@
 {
     using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
+    using FluentValidation;
+    using Mesa.HUM.Application.Behaviors;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
 
@@ -12,12 +14,22 @@
         {
             return hostBuilder.ConfigureServices (
                 ( context , services ) => services
-                    .RegisterMediatR ( ) );
+                    .RegisterMediatR ( )
+                    .RegisterValidators ( ) );
         }
 
         private static IServiceCollection RegisterMediatR ( this IServiceCollection services )
         {
-            return services.AddMediatR ( ( c ) => c.RegisterServicesFromAssembly ( Assembly.GetExecutingAssembly ( ) ) );
+            return services.AddMediatR ( ( c ) =>
+            {
+                c.RegisterServicesFromAssembly ( Assembly.GetExecutingAssembly ( ) );
+                c.AddOpenBehavior ( typeof ( ValidationBehavior<,> ) );
+            } );
+        }
+
+        private static IServiceCollection RegisterValidators ( this IServiceCollection services )
+        {
+            return services.AddValidatorsFromAssembly ( Assembly.GetExecutingAssembly ( ) , includeInternalTypes: true );
         }
     }
 }

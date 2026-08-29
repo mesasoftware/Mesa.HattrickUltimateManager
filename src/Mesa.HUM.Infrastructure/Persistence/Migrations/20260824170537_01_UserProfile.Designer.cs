@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Mesa.HUM.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260819185417_01_UserProfile")]
+    [Migration("20260824170537_01_UserProfile")]
     partial class _01_UserProfile
     {
         /// <inheritdoc />
@@ -23,23 +23,17 @@ namespace Mesa.HUM.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Mesa.HUM.Domain.Profiles.UserProfile", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasMaxLength(36)
                         .HasColumnType("TEXT")
                         .HasColumnName("id")
                         .IsFixedLength();
 
                     b.Property<DateTimeOffset?>("SynchronizedAt")
-                        .HasMaxLength(23)
                         .HasColumnType("TEXT")
                         .HasColumnName("synchronized_at")
                         .IsFixedLength();
 
                     b.HasKey("Id")
                         .HasName("pk_user_profiles");
-
-                    b.HasIndex("Id")
-                        .IsUnique()
-                        .HasDatabaseName("ix_user_profiles_id");
 
                     b.ToTable("user_profiles", (string)null);
                 });
@@ -53,27 +47,23 @@ namespace Mesa.HUM.Infrastructure.Persistence.Migrations
                                 .HasColumnName("id");
 
                             b1.Property<DateTimeOffset>("ExpiresAt")
-                                .HasMaxLength(23)
                                 .HasColumnType("TEXT")
                                 .HasColumnName("chpp_token_expires_at")
                                 .IsFixedLength();
 
                             b1.Property<DateTimeOffset>("ObtainedAt")
-                                .HasMaxLength(23)
                                 .HasColumnType("TEXT")
                                 .HasColumnName("chpp_token_obtained_at")
                                 .IsFixedLength();
 
                             b1.Property<string>("Token")
                                 .IsRequired()
-                                .HasMaxLength(36)
                                 .HasColumnType("TEXT")
                                 .HasColumnName("chpp_token_token")
                                 .IsFixedLength();
 
                             b1.Property<string>("TokenSecret")
                                 .IsRequired()
-                                .HasMaxLength(36)
                                 .HasColumnType("TEXT")
                                 .HasColumnName("chpp_token_token_secret")
                                 .IsFixedLength();

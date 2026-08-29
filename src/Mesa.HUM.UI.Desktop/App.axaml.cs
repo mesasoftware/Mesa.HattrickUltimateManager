@@ -31,6 +31,8 @@ namespace Mesa.HUM.UI.Desktop
 
             _host.ApplyMigrations ( );
 
+            _host.Start ( );
+
             if ( ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop )
             {
                 desktop.MainWindow = new MainWindow

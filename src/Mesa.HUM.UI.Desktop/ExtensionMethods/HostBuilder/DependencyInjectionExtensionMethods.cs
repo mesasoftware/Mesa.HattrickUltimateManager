@@ -2,6 +2,7 @@
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Reflection;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Hosting;
 
@@ -24,6 +25,12 @@
                 if ( context.HostingEnvironment.IsDevelopment ( ) )
                 {
                     configurationBuilder.AddJsonFile ( "appSettings.development.json" );
+
+                    var assembly = Assembly.GetEntryAssembly ( );
+
+                    ArgumentNullException.ThrowIfNull ( assembly );
+
+                    configurationBuilder.AddUserSecrets ( assembly );
                 }
             } );
         }
