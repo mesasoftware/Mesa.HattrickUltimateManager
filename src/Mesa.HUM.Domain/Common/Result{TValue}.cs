@@ -24,7 +24,7 @@
             }
         }
 
-        public new static Result<TValue> Failure ( Error error )
+        public static new Result<TValue> Failure ( Error error )
         {
             return new Result<TValue> ( error );
         }

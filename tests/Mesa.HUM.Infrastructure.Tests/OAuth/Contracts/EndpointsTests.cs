@@ -5,30 +5,21 @@
 
     public class EndpointsTests
     {
-        private const string accessTokenUrlValue = "accessTokenUrl";
-
-        private const string callBackUrlValue = "callBackUrl";
-
-        private const string checkTokenUrlValue = "checkTokenUrl";
-
-        private const string emptyValue = "";
-
-        private const string protectedResourceUrlValue = "protectedResourceUrl";
-
-        private const string requestTokenUrlValue = "requestTokenUrl";
-
-        private const string revokeTokenUrlValue = "revokeTokenUrl";
-
-        private const string userAuthorizeUrlValue = "userAuthorizeUrl";
-
         [Theory]
-        [InlineData ( emptyValue , callBackUrlValue , checkTokenUrlValue , protectedResourceUrlValue , requestTokenUrlValue , revokeTokenUrlValue , userAuthorizeUrlValue )]
-        [InlineData ( accessTokenUrlValue , emptyValue , checkTokenUrlValue , protectedResourceUrlValue , requestTokenUrlValue , revokeTokenUrlValue , userAuthorizeUrlValue )]
-        [InlineData ( accessTokenUrlValue , callBackUrlValue , emptyValue , protectedResourceUrlValue , requestTokenUrlValue , revokeTokenUrlValue , userAuthorizeUrlValue )]
-        [InlineData ( accessTokenUrlValue , callBackUrlValue , checkTokenUrlValue , emptyValue , requestTokenUrlValue , revokeTokenUrlValue , userAuthorizeUrlValue )]
-        [InlineData ( accessTokenUrlValue , callBackUrlValue , checkTokenUrlValue , protectedResourceUrlValue , emptyValue , revokeTokenUrlValue , userAuthorizeUrlValue )]
-        [InlineData ( accessTokenUrlValue , callBackUrlValue , checkTokenUrlValue , protectedResourceUrlValue , requestTokenUrlValue , emptyValue , userAuthorizeUrlValue )]
-        [InlineData ( accessTokenUrlValue , callBackUrlValue , checkTokenUrlValue , protectedResourceUrlValue , requestTokenUrlValue , revokeTokenUrlValue , emptyValue )]
+        [InlineData ( "" , "callBackUrl" , "checkTokenUrl" , "protectedResourceUrl" , "requestTokenUrl" , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "   " , "callBackUrl" , "checkTokenUrl" , "protectedResourceUrl" , "requestTokenUrl" , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "accessToken" , "" , "checkTokenUrl" , "protectedResourceUrl" , "requestTokenUrl" , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "accessToken" , "   " , "checkTokenUrl" , "protectedResourceUrl" , "requestTokenUrl" , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "accessToken" , "callBackUrl" , "" , "protectedResourceUrl" , "requestTokenUrl" , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "accessToken" , "callBackUrl" , "   " , "protectedResourceUrl" , "requestTokenUrl" , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "accessToken" , "callBackUrl" , "checkTokenUrl" , "" , "requestTokenUrl" , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "accessToken" , "callBackUrl" , "checkTokenUrl" , "   " , "requestTokenUrl" , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "accessToken" , "callBackUrl" , "checkTokenUrl" , "protectedResourceUrl" , "" , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "accessToken" , "callBackUrl" , "checkTokenUrl" , "protectedResourceUrl" , "   " , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "accessToken" , "callBackUrl" , "checkTokenUrl" , "protectedResourceUrl" , "requestTokenUrl" , "" , "userAuthorizeUrl" )]
+        [InlineData ( "accessToken" , "callBackUrl" , "checkTokenUrl" , "protectedResourceUrl" , "requestTokenUrl" , "   " , "userAuthorizeUrl" )]
+        [InlineData ( "accessToken" , "callBackUrl" , "checkTokenUrl" , "protectedResourceUrl" , "requestTokenUrl" , "revokeTokenUrl" , "" )]
+        [InlineData ( "accessToken" , "callBackUrl" , "checkTokenUrl" , "protectedResourceUrl" , "requestTokenUrl" , "revokeTokenUrl" , "   " )]
         public void Constructor_WhenParameterIsEmpty_ShouldThrowArgumentException (
         string accessTokenUrl ,
         string callBackUrl ,
@@ -46,17 +37,17 @@
                 protectedResourceUrl ,
                 requestTokenUrl ,
                 revokeTokenUrl ,
-                userAuthorizeUrl ) );
+                userAuthorizeUrl! ) );
         }
 
         [Theory]
-        [InlineData ( null , callBackUrlValue , checkTokenUrlValue , protectedResourceUrlValue , requestTokenUrlValue , revokeTokenUrlValue , userAuthorizeUrlValue )]
-        [InlineData ( accessTokenUrlValue , null , checkTokenUrlValue , protectedResourceUrlValue , requestTokenUrlValue , revokeTokenUrlValue , userAuthorizeUrlValue )]
-        [InlineData ( accessTokenUrlValue , callBackUrlValue , null , protectedResourceUrlValue , requestTokenUrlValue , revokeTokenUrlValue , userAuthorizeUrlValue )]
-        [InlineData ( accessTokenUrlValue , callBackUrlValue , checkTokenUrlValue , null , requestTokenUrlValue , revokeTokenUrlValue , userAuthorizeUrlValue )]
-        [InlineData ( accessTokenUrlValue , callBackUrlValue , checkTokenUrlValue , protectedResourceUrlValue , null , revokeTokenUrlValue , userAuthorizeUrlValue )]
-        [InlineData ( accessTokenUrlValue , callBackUrlValue , checkTokenUrlValue , protectedResourceUrlValue , requestTokenUrlValue , null , userAuthorizeUrlValue )]
-        [InlineData ( accessTokenUrlValue , callBackUrlValue , checkTokenUrlValue , protectedResourceUrlValue , requestTokenUrlValue , revokeTokenUrlValue , null )]
+        [InlineData ( null , "callBackUrl" , "checkTokenUrl" , "protectedResourceUrl" , "requestTokenUrl" , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "accessTokenUrl" , null , "checkTokenUrl" , "protectedResourceUrl" , "requestTokenUrl" , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "accessTokenUrl" , "callBackUrl" , null , "protectedResourceUrl" , "requestTokenUrl" , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "accessTokenUrl" , "callBackUrl" , "checkTokenUrl" , null , "requestTokenUrl" , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "accessTokenUrl" , "callBackUrl" , "checkTokenUrl" , "protectedResourceUrl" , null , "revokeTokenUrl" , "userAuthorizeUrl" )]
+        [InlineData ( "accessTokenUrl" , "callBackUrl" , "checkTokenUrl" , "protectedResourceUrl" , "requestTokenUrl" , null , "userAuthorizeUrl" )]
+        [InlineData ( "accessTokenUrl" , "callBackUrl" , "checkTokenUrl" , "protectedResourceUrl" , "requestTokenUrl" , "revokeTokenUrl" , null )]
         public void Constructor_WhenParameterIsNull_ShouldThrowArgumentNullException (
         string? accessTokenUrl ,
         string? callBackUrl ,
@@ -82,22 +73,22 @@
         {
             // Act.
             var sut = new Endpoints (
-                accessTokenUrlValue ,
-                callBackUrlValue ,
-                checkTokenUrlValue ,
-                protectedResourceUrlValue ,
-                requestTokenUrlValue ,
-                revokeTokenUrlValue ,
-                userAuthorizeUrlValue );
+                "accessTokenUrl" ,
+                "callBackUrl" ,
+                "checkTokenUrl" ,
+                "protectedResourceUrl" ,
+                "requestTokenUrl" ,
+                "revokeTokenUrl" ,
+                "userAuthorizeUrl" );
 
             // Assert.
-            Assert.Equal ( accessTokenUrlValue , sut.AccessTokenUrl );
-            Assert.Equal ( callBackUrlValue , sut.CallBackUrl );
-            Assert.Equal ( checkTokenUrlValue , sut.CheckTokenUrl );
-            Assert.Equal ( protectedResourceUrlValue , sut.ProtectedResourceUrl );
-            Assert.Equal ( requestTokenUrlValue , sut.RequestTokenUrl );
-            Assert.Equal ( revokeTokenUrlValue , sut.RevokeTokenUrl );
-            Assert.Equal ( userAuthorizeUrlValue , sut.UserAuthorizeUrl );
+            Assert.Equal ( "accessTokenUrl" , sut.AccessTokenUrl );
+            Assert.Equal ( "callBackUrl" , sut.CallBackUrl );
+            Assert.Equal ( "checkTokenUrl" , sut.CheckTokenUrl );
+            Assert.Equal ( "protectedResourceUrl" , sut.ProtectedResourceUrl );
+            Assert.Equal ( "requestTokenUrl" , sut.RequestTokenUrl );
+            Assert.Equal ( "revokeTokenUrl" , sut.RevokeTokenUrl );
+            Assert.Equal ( "userAuthorizeUrl" , sut.UserAuthorizeUrl );
         }
     }
 }

@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Mesa.HUM.Presentation\Mesa.HUM.Presentation.csproj" />
+    <ProjectReference Include="..\Mesa.HUM.Tests.Shared\Mesa.HUM.Tests.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

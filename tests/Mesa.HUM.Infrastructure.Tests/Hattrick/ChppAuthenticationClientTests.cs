@@ -39,7 +39,7 @@ namespace Mesa.HUM.Infrastructure.Tests.Hattrick
         public void BuildAuthorizationUrl_WhenScopesProvided_ShouldForwardScopesToOAuthClient ( )
         {
             // Arrange.
-            string [ ] scopes = ["manage_challenges" , "set_training"];
+            string [ ] scopes = [ "manage_challenges" , "set_training" ];
 
             var oauthClientMock = new Mock<IOAuthClient> ( );
             oauthClientMock
