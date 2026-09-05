@@ -2,9 +2,9 @@
 {
     using System;
 
-    public sealed class Scopes
+    public sealed class Scope
     {
-        public Scopes ( string name , bool requiresSupporter , string value )
+        public Scope ( string name , bool requiresSupporter , string value )
         {
             ArgumentException.ThrowIfNullOrWhiteSpace ( name );
             ArgumentException.ThrowIfNullOrWhiteSpace ( value );

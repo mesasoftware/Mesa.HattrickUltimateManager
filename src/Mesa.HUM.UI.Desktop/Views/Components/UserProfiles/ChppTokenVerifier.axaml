@@ -1,0 +1,67 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="using:Mesa.HUM.UI.Desktop.Views.Components"
+             xmlns:res="using:Mesa.HUM.UI.Desktop.Resources"
+             xmlns:vm="using:Mesa.HUM.Presentation.ViewModels.Components.UserProfiles"
+             mc:Ignorable="d"
+             d:DesignWidth="400"
+             d:DesignHeight="200"
+             x:Class="Mesa.HUM.UI.Desktop.Views.Components.UserProfiles.ChppTokenVerifier"
+             x:DataType="vm:ChppTokenVerifierViewModel">
+
+    <Border
+        CornerRadius="{DynamicResource OverlayCornerRadius}"
+        Background="{DynamicResource ControlFillColorDefault}"
+        Padding="5">
+
+        <StackPanel
+            Grid.IsSharedSizeScope="True"
+            HorizontalAlignment="Center"
+            Orientation="Vertical"
+            Spacing="10">
+
+            <Label
+                Content="{x:Static res:Translations.ConfirmAuthorization}"
+                FontSize="21"
+                HorizontalAlignment="Center" />
+
+            <Separator />
+
+            <Label
+                Content="{x:Static res:Translations.PasteVerifier}" />
+
+            <TextBox
+                PlaceholderText="{x:Static res:Translations.VerifierCode}"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Text="{Binding Verifier}" />
+
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                Spacing="5">
+
+                <components:CustomButton
+                    Command="{Binding GoBackCommand}"
+                    Distribution="ImageBeforeText"
+                    Image="{DynamicResource ArrowLeft}"
+                    Text="{x:Static res:Translations.Back}"
+                    MinWidth="100" />
+
+                <components:CustomButton
+                    Command="{Binding GetAccessTokenCommand}"
+                    Distribution="ImageBeforeText"
+                    Image="{DynamicResource Check}"
+                    IsEnabled="{Binding CanAuthorize}"
+                    Text="{x:Static res:Translations.Confirm}"
+                    MinWidth="100"/>
+
+            </StackPanel>
+
+        </StackPanel>
+
+    </Border>
+
+</UserControl>

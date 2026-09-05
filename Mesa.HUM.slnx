@@ -4,6 +4,7 @@
     <File Path=".github/workflows/debug.yml" />
     <File Path=".github/workflows/release.yml" />
     <File Path=".gitignore" />
+    <File Path="global.json" />
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/Mesa.HUM.Application/Mesa.HUM.Application.csproj" Id="e8fb66e6-b158-43ef-b6ac-9716ecd68521" />

@@ -1,6 +1,7 @@
 ﻿namespace Mesa.HUM.Presentation.ViewModels.Components.UserProfiles
 {
     using System;
+    using Mesa.HUM.Domain.Profiles.Enums;
     using Mesa.HUM.Presentation.Abstractions;
 
     public class ChppScopeItemModel : ObservableComponent
@@ -17,19 +18,43 @@
             RequiresSupporter = requiresSupporter;
             Value = value;
             IsSelected = false;
+
+            if ( !Enum.TryParse ( name , out ChppScope scope ) )
+            {
+                throw new InvalidCastException ( "INVALID_CAST_EXCEPTION" );
+            }
+
+            Scope = scope;
         }
 
         public bool IsSelected
         {
             get;
 
-            set { SetField ( ref field , value ); }
+            set
+            {
+                SetField ( ref field , value );
+            }
         }
 
-        public string Name { get; }
+        public string Name
+        {
+            get;
+        }
 
-        public bool RequiresSupporter { get; }
+        public bool RequiresSupporter
+        {
+            get;
+        }
 
-        public string Value { get; }
+        public ChppScope Scope
+        {
+            get;
+        }
+
+        public string Value
+        {
+            get;
+        }
     }
 }

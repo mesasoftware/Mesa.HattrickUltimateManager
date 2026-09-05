@@ -3,23 +3,44 @@ namespace Mesa.HUM.Presentation.Tests.ViewModels.Components.UserProfiles
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using AutoFixture;
     using Mesa.HUM.Presentation.ViewModels.Components.UserProfiles;
-    using Mesa.HUM.Tests.Shared.Helpers;
 
     public class ChppScopePickerViewModelTests
     {
+        private static ChppScopeItemModel [ ] GetScopeItems ( params string [ ] selectedScopes )
+        {
+            return
+            [
+                new ChppScopeItemModel("ManageChallenges", false, "manage_challenges")
+                {
+                    IsSelected = selectedScopes.Contains("manage_challenges")
+                } ,
+                new ChppScopeItemModel( "SetMatchOrder" , true, "set_matchorder" )
+                {
+                    IsSelected = selectedScopes.Contains("set_matchorder")
+                },
+                new ChppScopeItemModel( "ManageYouthPlayers" , false, "manage_youthplayers" )
+                {
+                    IsSelected = selectedScopes.Contains("manage_youthplayers")
+                },
+                new ChppScopeItemModel( "SetTraining" , true, "set_training" )
+                {
+                    IsSelected = selectedScopes.Contains("set_training")
+                },
+                new ChppScopeItemModel( "PlaceBid" , true , "place_bid" )
+                {
+                    IsSelected = selectedScopes.Contains("place_bid")
+                }
+            ];
+        }
+
         public class ConstructorTests
         {
             [Fact]
             public void Constructor_GivenScopes_ShouldNotThrowException ( )
             {
                 // Arrange.
-                var fixture = FixtureHelper.GetFixture ( );
-
-                var scopes = fixture
-                    .CreateMany<ChppScopeItemModel> ( 5 )
-                    .ToArray ( );
+                var scopes = GetScopeItems ( );
 
                 // Act.
                 var actual = Record.Exception ( ( ) => new ChppScopePickerViewModel ( scopes ) );
@@ -32,11 +53,7 @@ namespace Mesa.HUM.Presentation.Tests.ViewModels.Components.UserProfiles
             public void Constructor_ShouldInitializeProperties ( )
             {
                 // Arrange.
-                var fixture = FixtureHelper.GetFixture ( );
-
-                var scopes = fixture
-                    .CreateMany<ChppScopeItemModel> ( 5 )
-                    .ToArray ( );
+                var scopes = GetScopeItems ( );
 
                 // Act.
                 var sut = new ChppScopePickerViewModel ( scopes );
@@ -86,11 +103,7 @@ namespace Mesa.HUM.Presentation.Tests.ViewModels.Components.UserProfiles
             public async Task CopyLinkRequested_WhenEventHasHandler_ShouldCallHandlerAndSendSelectedScopes ( )
             {
                 // Arrange.
-                var fixture = FixtureHelper.GetFixture ( );
-
-                var scopes = fixture
-                    .CreateMany<ChppScopeItemModel> ( 5 )
-                    .ToArray ( );
+                var scopes = GetScopeItems ( );
 
                 scopes [ 0 ].IsSelected = true;
                 scopes [ 2 ].IsSelected = true;
@@ -120,11 +133,7 @@ namespace Mesa.HUM.Presentation.Tests.ViewModels.Components.UserProfiles
             public void CopyLinkRequested_WhenEventHasNoHandler_ShouldReturnCompletedTask ( )
             {
                 // Arrange.
-                var fixture = FixtureHelper.GetFixture ( );
-
-                var scopes = fixture
-                    .CreateMany<ChppScopeItemModel> ( 5 )
-                    .ToArray ( );
+                var scopes = GetScopeItems ( );
 
                 var sut = new ChppScopePickerViewModel ( scopes );
 
@@ -142,11 +151,7 @@ namespace Mesa.HUM.Presentation.Tests.ViewModels.Components.UserProfiles
             public async Task OpenLinkRequested_WhenEventHasHandler_ShouldCallHandlerAndSendSelectedScopes ( )
             {
                 // Arrange.
-                var fixture = FixtureHelper.GetFixture ( );
-
-                var scopes = fixture
-                    .CreateMany<ChppScopeItemModel> ( 5 )
-                    .ToArray ( );
+                var scopes = GetScopeItems ( "manage_challenges" , "manage_youthplayers" );
 
                 scopes [ 0 ].IsSelected = true;
                 scopes [ 2 ].IsSelected = true;
@@ -176,11 +181,7 @@ namespace Mesa.HUM.Presentation.Tests.ViewModels.Components.UserProfiles
             public void OpenLinkRequested_WhenEventHasNoHandler_ShouldReturnCompletedTask ( )
             {
                 // Arrange.
-                var fixture = FixtureHelper.GetFixture ( );
-
-                var scopes = fixture
-                    .CreateMany<ChppScopeItemModel> ( 5 )
-                    .ToArray ( );
+                var scopes = GetScopeItems ( );
 
                 var sut = new ChppScopePickerViewModel ( scopes );
 
@@ -199,25 +200,24 @@ namespace Mesa.HUM.Presentation.Tests.ViewModels.Components.UserProfiles
             {
                 // Arrange.
                 var sut = new ChppScopePickerViewModel (
-                [
-                    new ChppScopeItemModel ( "Manage Youth Players" , false , "manage_youthplayers" ) { IsSelected = true },
-                    new ChppScopeItemModel ( "Set Matchorder" , true , "set_matchorder" ) { IsSelected = true },
-                ] );
+                    GetScopeItems ( "manage_challenges" , "set_matchorder" , "manage_youthplayers" , "set_training" , "place_bid" ) );
 
                 // Act.
                 string [ ] actual = sut.SelectedScopes;
 
                 // Assert.
-                Assert.Equal ( [ "manage_youthplayers" , "set_matchorder" ] , actual );
+                Assert.Equal ( [ "manage_challenges" , "set_matchorder" , "manage_youthplayers" , "set_training" , "place_bid" ] , actual );
             }
 
             [Fact]
             public void SelectedScopes_WhenItemSelectionChanges_ShouldReflectCurrentState ( )
             {
                 // Arrange.
-                var item = new ChppScopeItemModel ( "Manage Youth Players" , false , "manage_youthplayers" );
+                var scopeItems = GetScopeItems ( );
 
-                var sut = new ChppScopePickerViewModel ( [ item ] );
+                var sut = new ChppScopePickerViewModel ( scopeItems );
+
+                var item = scopeItems.Single ( x => x.Value == "manage_youthplayers" );
 
                 // Act & Assert.
                 Assert.Empty ( sut.SelectedScopes! );
@@ -232,10 +232,7 @@ namespace Mesa.HUM.Presentation.Tests.ViewModels.Components.UserProfiles
             {
                 // Arrange.
                 var sut = new ChppScopePickerViewModel (
-                [
-                    new ChppScopeItemModel ( "Manage Youth Players" , false , "manage_youthplayers" ),
-                    new ChppScopeItemModel ( "Set Matchorder" , true , "set_matchorder" ),
-                ] );
+                    GetScopeItems ( ) );
 
                 // Act.
                 string [ ] actual = sut.SelectedScopes;
@@ -249,17 +246,13 @@ namespace Mesa.HUM.Presentation.Tests.ViewModels.Components.UserProfiles
             {
                 // Arrange.
                 var sut = new ChppScopePickerViewModel (
-                [
-                    new ChppScopeItemModel ( "Manage Youth Players" , false , "manage_youthplayers" ) { IsSelected = true },
-                    new ChppScopeItemModel ( "Set Matchorder" , true , "set_matchorder" ),
-                    new ChppScopeItemModel ( "Manage Challenges" , true , "manage_challenges" ) { IsSelected = true },
-                ] );
+                    GetScopeItems ( "manage_youthplayers" , "manage_challenges" ) );
 
                 // Act.
                 string [ ] actual = sut.SelectedScopes;
 
                 // Assert.
-                Assert.Equal ( [ "manage_youthplayers" , "manage_challenges" ] , actual );
+                Assert.Equal ( [ "manage_challenges" , "manage_youthplayers" ] , actual );
             }
         }
     }

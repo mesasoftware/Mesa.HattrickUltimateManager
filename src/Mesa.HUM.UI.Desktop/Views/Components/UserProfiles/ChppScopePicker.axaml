@@ -1,0 +1,189 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="using:Mesa.HUM.UI.Desktop.Views.Components"
+             xmlns:conv="using:Mesa.HUM.UI.Desktop.Converters"
+             xmlns:res="using:Mesa.HUM.UI.Desktop.Resources"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:vm="using:Mesa.HUM.Presentation.ViewModels.Components.UserProfiles"
+             mc:Ignorable="d"
+             d:DesignWidth="400"
+             d:DesignHeight="200"
+             x:Class="Mesa.HUM.UI.Desktop.Views.Components.UserProfiles.ChppScopePicker"
+             x:DataType="vm:ChppScopePickerViewModel">
+
+    <UserControl.Resources>
+
+        <conv:EnumToLocalizedValueConverter x:Key="enumToLocalizedValueConverter" />
+        <conv:BooleanToYesNoValueConverter x:Key="booleanToYesNoValueConverter" />
+
+        <sys:String x:Key="titleValue">Title</sys:String>
+        <sys:String x:Key="descriptionValue">Description</sys:String>
+
+    </UserControl.Resources>
+
+    <Border
+        CornerRadius="{DynamicResource OverlayCornerRadius}"
+        Background="{DynamicResource ControlFillColorDefault}"
+        Padding="5">
+
+        <StackPanel
+            Grid.IsSharedSizeScope="True"
+            HorizontalAlignment="Center"
+            Orientation="Vertical"
+            Spacing="10">
+
+            <Label
+                Content="{x:Static res:Translations.OptionalFeatures}"
+                FontSize="21"
+                HorizontalAlignment="Center" />
+
+            <Separator />
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition
+                        SharedSizeGroup="A"
+                        Width="Auto" />
+
+                    <ColumnDefinition
+                        SharedSizeGroup="B"
+                        Width="Auto" />
+
+                    <ColumnDefinition
+                        SharedSizeGroup="C"
+                        Width="Auto" />
+
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Column="0"
+                    Content="{x:Static res:Translations.Feature}"
+                    FontSize="16"
+                    HorizontalAlignment="Center" />
+
+                <Label
+                    Grid.Column="1"
+                    Content="{x:Static res:Translations.Description}"
+                    FontSize="16" />
+
+                <Label
+                    Grid.Column="2"
+                    Content="{x:Static res:Translations.RequiresSupporter}"
+                    FontSize="16"
+                    HorizontalAlignment="Center" />
+
+            </Grid>
+
+            <Separator />
+
+            <ItemsControl
+                ItemsSource="{Binding Scopes}">
+
+                <ItemsControl.ItemsPanel>
+
+                    <ItemsPanelTemplate>
+
+                        <StackPanel
+                            Orientation="Vertical"
+                            Spacing="5" />
+
+                    </ItemsPanelTemplate>
+
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+
+                    <DataTemplate x:DataType="{x:Type vm:ChppScopeItemModel}">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition
+                                    SharedSizeGroup="A"
+                                    Width="Auto" />
+
+                                <ColumnDefinition
+                                    SharedSizeGroup="B"
+                                    Width="Auto" />
+
+                                <ColumnDefinition
+                                    SharedSizeGroup="C"
+                                    Width="Auto" />
+
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel
+                                Grid.Column="0"
+                                Orientation="Horizontal"
+                                Spacing="5">
+
+                                <ToggleSwitch
+                                    IsChecked="{Binding IsSelected}"
+                                    OnContent=""
+                                    OffContent="" />
+
+                                <Label
+                                    Content="{Binding Scope,
+                                    Converter={StaticResource enumToLocalizedValueConverter},
+                                    ConverterParameter={StaticResource titleValue}}"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center" />
+
+                            </StackPanel>
+
+                            <Label
+                                Grid.Column="1"
+                                Content="{Binding Scope,
+                                Converter={StaticResource enumToLocalizedValueConverter},
+                                ConverterParameter={StaticResource descriptionValue}}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center" />
+
+                            <Label
+                                Grid.Column="2"
+                                Content="{Binding RequiresSupporter,
+                                Converter={StaticResource booleanToYesNoValueConverter}}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+
+                        </Grid>
+
+                    </DataTemplate>
+
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+            <Separator/>
+
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                Spacing="5">
+
+                <components:CustomButton
+                    Command="{Binding OpenLinkCommand}"
+                    Distribution="ImageBeforeText"
+                    Image="{DynamicResource OpenLink}"
+                    Text="{x:Static res:Translations.OpenLink}"
+                    MinWidth="100" />
+
+                <components:CustomButton
+                    Command="{Binding CopyLinkCommand}"
+                    Distribution="ImageBeforeText"
+                    Image="{DynamicResource Copy}"
+                    Text="{x:Static res:Translations.CopyLink}"
+                    MinWidth="100" />
+
+            </StackPanel>
+
+        </StackPanel>
+
+    </Border>
+
+</UserControl>

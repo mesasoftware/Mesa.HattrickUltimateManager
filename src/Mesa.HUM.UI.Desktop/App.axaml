@@ -15,6 +15,7 @@
     <Application.Styles>
 
         <!-- Icons -->
+        <StyleInclude Source="/Assets/Svg/Icons.axaml" />
         <StyleInclude Source="/Assets/Svg/Buttons.axaml" />
 
         <!-- Styles -->

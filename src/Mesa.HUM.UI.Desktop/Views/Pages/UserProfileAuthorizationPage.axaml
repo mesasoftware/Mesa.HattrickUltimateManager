@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:upComp="using:Mesa.HUM.UI.Desktop.Views.Components.UserProfiles"
+             xmlns:vm="using:Mesa.HUM.Presentation.ViewModels.Pages"
+             mc:Ignorable="d"
+             d:DesignWidth="960"
+             d:DesignHeight="540"
+             x:Class="Mesa.HUM.UI.Desktop.Views.Pages.UserProfileAuthorizationPage"
+             x:DataType="vm:UserProfileAuthorizationViewModel">
+
+    <StackPanel
+        Orientation="Vertical"
+        Spacing="5">
+
+        <Panel IsVisible="{Binding ShowChppScopePicker}">
+
+            <upComp:ChppScopePicker
+                DataContext="{Binding ChppScopePicker}" />
+
+        </Panel>
+
+        <Panel
+            IsVisible="{Binding ShowChppTokenVerifier}">
+
+            <upComp:ChppTokenVerifier
+                DataContext="{Binding ChppTokenVerifier}" />
+
+        </Panel>
+
+    </StackPanel>
+
+</UserControl>

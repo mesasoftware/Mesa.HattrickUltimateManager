@@ -33,7 +33,16 @@
         {
             get;
 
-            set { SetField ( ref field , value , childPropertiesNames: nameof ( CanAuthorize ) ); }
+            set
+            {
+                SetField (
+                    ref field ,
+                    value ,
+                    nameof ( Verifier ) ,
+                    nameof ( CanAuthorize ) );
+
+                GetAccessTokenCommand.NotifyCanExecuteChanged ( );
+            }
         }
 
         private Task OnGetAccessToken ( )
@@ -52,6 +61,8 @@
 
         private void OnGoBack ( )
         {
+            Verifier = null;
+
             GoBackRequested?.Invoke ( );
         }
     }

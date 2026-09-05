@@ -46,6 +46,13 @@
 
     </Style>
 
+        <Style Selector="ToggleSwitch">
+
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Padding" Value="5" />
+
+    </Style>
+
     <Style
         Selector="components|CustomButton">
 

@@ -3,7 +3,7 @@
     using System;
     using Mesa.HUM.Presentation.Contracts;
 
-    public class ScopesTests
+    public class ScopeTests
     {
         [Theory]
         [InlineData ( "" , "value" )]
@@ -15,7 +15,7 @@
         string value )
         {
             // Assert.
-            Assert.Throws<ArgumentException> ( ( ) => new Scopes (
+            Assert.Throws<ArgumentException> ( ( ) => new Scope (
                 name ,
                 true ,
                 value ) );
@@ -29,7 +29,7 @@
             string? value )
         {
             // Assert.
-            Assert.Throws<ArgumentNullException> ( ( ) => new Scopes (
+            Assert.Throws<ArgumentNullException> ( ( ) => new Scope (
                 name! ,
                 true ,
                 value! ) );
@@ -39,7 +39,7 @@
         public void Constructor_WhenParametersAreValid_ShouldPopulateProperties ( )
         {
             // Act.
-            var sut = new Scopes (
+            var sut = new Scope (
                 "name" ,
                 true ,
                 "value" );

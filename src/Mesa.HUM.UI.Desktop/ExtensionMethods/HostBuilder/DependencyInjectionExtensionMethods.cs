@@ -3,7 +3,10 @@
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
+    using Mesa.HUM.Presentation.Abstractions.Interfaces;
+    using Mesa.HUM.UI.Desktop.Dispatching;
     using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
 
     [ExcludeFromCodeCoverage]
@@ -12,7 +15,8 @@
         public static IHostBuilder RegisterDesktopUIDependencies ( this IHostBuilder hostBuilder )
         {
             return hostBuilder
-                .RegisterConfiguration ( );
+                .RegisterConfiguration ( )
+                .RegisterServices ( );
         }
 
         private static IHostBuilder RegisterConfiguration ( this IHostBuilder hostBuilder )
@@ -33,6 +37,14 @@
                     configurationBuilder.AddUserSecrets ( assembly );
                 }
             } );
+        }
+
+        private static IHostBuilder RegisterServices ( this IHostBuilder hostBuilder )
+        {
+            return hostBuilder.ConfigureServices ( ( _ , services ) =>
+                services
+                    .AddSingleton<ILinkLauncher , SystemLinkLauncher> ( )
+                    .AddSingleton<IUIDispatcher , AvaloniaDispatcher> ( ) );
         }
     }
 }

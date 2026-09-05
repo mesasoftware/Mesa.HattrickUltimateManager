@@ -2,7 +2,5 @@
 {
     using Mesa.HUM.Presentation.Abstractions;
 
-    public abstract class ViewModelBase : ObservableComponent
-    {
-    }
+    public abstract class ViewModelBase : ObservableComponent;
 }

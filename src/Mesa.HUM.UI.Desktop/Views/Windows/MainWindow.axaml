@@ -1,0 +1,77 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:components="using:Mesa.HUM.UI.Desktop.Views.Components"
+        xmlns:vm="using:Mesa.HUM.Presentation.ViewModels.Windows"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        d:DesignWidth="800"
+        d:DesignHeight="450"
+        x:Class="Mesa.HUM.UI.Desktop.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/hum.ico"
+        Title="Hattrick Ultimate Manager">
+
+    <Design.DataContext>
+
+        <vm:MainWindowViewModel />
+
+    </Design.DataContext>
+
+    <Panel>
+
+        <!-- Collapsible Menu -->
+        <SplitView DisplayMode="CompactInline"
+                   IsPaneOpen="False"
+                   CompactPaneLength="52"
+                   OpenPaneLength="300">
+
+            <SplitView.Pane>
+
+                <StackPanel Orientation="Vertical"
+                            Spacing="5"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+
+                    <Button Margin="11 5"
+                            Padding="4"
+                            VerticalAlignment="Center">
+
+                        <PathIcon Data="{DynamicResource Menu}"
+                                  Height="20"
+                                  Width="20" />
+
+                    </Button>
+
+                </StackPanel>
+
+            </SplitView.Pane>
+
+            <SplitView.Content>
+
+                <Border Background="{DynamicResource ControlFillColorDefault}"
+                        CornerRadius="8 0 0 0"
+                        Margin="0 5 0 0"
+                        Padding="25">
+
+                    <Panel>
+
+                        <!-- Page Content -->
+                        <TransitioningContentControl Content="{Binding ChildViewModel}"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"/>
+
+                    </Panel>
+
+                </Border>
+
+            </SplitView.Content>
+
+        </SplitView>
+
+        <!-- Toast notifications overlay -->
+        <components:NotificationPanel DataContext="{Binding Notifications}" />
+
+    </Panel>
+
+</Window>

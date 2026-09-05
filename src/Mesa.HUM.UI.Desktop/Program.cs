@@ -1,8 +1,10 @@
 ﻿namespace Mesa.HUM.UI.Desktop
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using Avalonia;
 
+    [ExcludeFromCodeCoverage]
     internal sealed class Program
     {
         // Avalonia configuration, don't remove; also used by visual designer.
