@@ -1,0 +1,231 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:Mesa.HUM.UI.Desktop.Views.Components">
+
+<Design.PreviewWith>
+
+        <Border
+            Padding="10">
+
+            <StackPanel
+                Spacing="10"
+                Width="150">
+
+                <StackPanel Background="{DynamicResource SystemRegionBrush}">
+
+                    <controls:CustomButton
+                        Distribution="ImageBeforeText"
+                        Image="{DynamicResource Missing}"
+                        Text="Test" />
+
+                    <controls:CustomButton
+                        Distribution="ImageAfterText"
+                        Image="{DynamicResource Missing}"
+                        Text="Test" />
+
+                    <controls:CustomButton
+                        Distribution="ImageAboveText"
+                        Image="{DynamicResource Missing}"
+                        Text="Test" />
+
+                    <controls:CustomButton
+                        Distribution="ImageBelowText"
+                        Image="{DynamicResource Missing}"
+                        Text="Test" />
+
+                </StackPanel>
+
+            </StackPanel>
+
+        </Border>
+
+    </Design.PreviewWith>
+
+<ControlTheme
+        x:Key="{x:Type controls:CustomButton}"
+        TargetType="controls:CustomButton">
+
+        <Setter
+            Property="Background"
+            Value="{DynamicResource ButtonBackground}" />
+
+        <Setter
+            Property="BorderBrush"
+            Value="{DynamicResource ButtonBorderBrush}" />
+
+        <Setter
+            Property="BorderThickness"
+            Value="{DynamicResource ButtonBorderThemeThickness}" />
+
+        <Setter
+            Property="CornerRadius"
+            Value="{DynamicResource ControlCornerRadius}" />
+
+        <Setter
+            Property="Foreground"
+            Value="{DynamicResource ButtonForeground}" />
+
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Center" />
+
+        <Setter
+            Property="HorizontalContentAlignment"
+            Value="Center" />
+
+        <Setter
+            Property="VerticalAlignment"
+            Value="Center" />
+
+        <Setter
+            Property="VerticalContentAlignment"
+            Value="Center" />
+
+        <Setter
+            Property="Template">
+
+            <ControlTemplate>
+
+                <Border
+                    x:Name="PART_Root"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Padding="{TemplateBinding Padding}">
+
+                    <DockPanel
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        HorizontalSpacing="5"
+                        Margin="5"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        VerticalSpacing="5">
+
+                        <PathIcon
+                            x:Name="PART_Image"
+                            DockPanel.Dock="Left"
+                            Data="{TemplateBinding Image}"
+                            Foreground="{TemplateBinding Foreground}"
+                            IsVisible="{TemplateBinding Image, Converter={x:Static ObjectConverters.IsNotNull}}"
+                            VerticalAlignment="Center" />
+
+                        <TextBlock
+                            x:Name="PART_Text"
+                            Text="{TemplateBinding Text}"
+                            TextAlignment="Center"
+                            VerticalAlignment="Center" />
+
+                    </DockPanel>
+
+                </Border>
+
+            </ControlTemplate>
+
+        </Setter>
+
+        <!-- Variants -->
+        <Style
+            Selector="^:image-after-text /template/ PathIcon#PART_Image">
+
+            <Setter
+                Property="DockPanel.Dock"
+                Value="Right" />
+
+        </Style>
+
+        <Style
+            Selector="^:image-above-text /template/ PathIcon#PART_Image">
+
+            <Setter
+                Property="DockPanel.Dock"
+                Value="Top" />
+
+            <Setter
+                Property="HorizontalAlignment"
+                Value="Center" />
+
+        </Style>
+
+        <Style
+            Selector="^:image-below-text /template/ PathIcon#PART_Image">
+
+            <Setter
+                Property="DockPanel.Dock"
+                Value="Bottom" />
+
+            <Setter
+                Property="HorizontalAlignment"
+                Value="Center" />
+
+        </Style>
+
+        <!-- States -->
+        <Style Selector="^:pointerover">
+
+            <Setter
+                Property="Foreground"
+                Value="{DynamicResource ButtonForegroundPointerOver}" />
+
+            <Style
+                Selector="^ /template/ Border#PART_Root">
+
+                <Setter
+                    Property="Background"
+                    Value="{DynamicResource ButtonBackgroundPointerOver}" />
+
+                <Setter
+                    Property="BorderBrush"
+                    Value="{DynamicResource ButtonBorderBrushPointerOver}" />
+
+            </Style>
+
+        </Style>
+
+        <Style
+            Selector="^:pressed">
+
+            <Setter
+                Property="Foreground"
+                Value="{DynamicResource ButtonForegroundPressed}" />
+
+            <Style
+                Selector="^ /template/ Border#PART_Root">
+
+                <Setter
+                    Property="Background"
+                    Value="{DynamicResource ButtonBackgroundPressed}" />
+
+                <Setter
+                    Property="BorderBrush"
+                    Value="{DynamicResource ButtonBorderBrushPressed}" />
+
+            </Style>
+
+        </Style>
+
+        <Style
+            Selector="^:disabled">
+
+            <Setter
+                Property="Foreground"
+                Value="{DynamicResource ButtonForegroundDisabled}" />
+
+            <Style
+                Selector="^ /template/ Border#PART_Root">
+
+                <Setter
+                    Property="Background"
+                    Value="{DynamicResource ButtonBackgroundDisabled}" />
+
+                <Setter
+                    Property="BorderBrush"
+                    Value="{DynamicResource ButtonBorderBrushDisabled}" />
+
+            </Style>
+
+        </Style>
+
+
+    </ControlTheme>
+
+</ResourceDictionary>

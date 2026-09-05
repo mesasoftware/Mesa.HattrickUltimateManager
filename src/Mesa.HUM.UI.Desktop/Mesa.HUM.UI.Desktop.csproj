@@ -25,14 +25,20 @@
     </ItemGroup>
 
     <ItemGroup>
+      <AvaloniaXaml Remove="Assets\Styles\Common.axaml" />
+      <AvaloniaXaml Remove="Assets\Svg\Buttons.axaml" />
+    </ItemGroup>
 
-        <PackageReference Include="Avalonia" Version="12.1.1" />
-        <PackageReference Include="Avalonia.Desktop" Version="12.1.1" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.1" />
-        <PackageReference Include="Avalonia.Fonts.Inter" Version="12.1.1" />
+    <ItemGroup>
+
+        <PackageReference Include="Avalonia" Version="12.1.2" />
+        <PackageReference Include="Avalonia.Desktop" Version="12.1.2" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.2" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="12.1.2" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.3" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+        <PackageReference Include="FluentAvaloniaUI" Version="3.1.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.11">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -62,6 +68,15 @@
       <None Update="appSettings.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <AvaloniaResource Update="Assets\Styles\Common.axaml">
+        <SubType>Designer</SubType>
+      </AvaloniaResource>
+      <AvaloniaResource Update="Assets\Svg\Buttons.axaml">
+        <SubType>Designer</SubType>
+      </AvaloniaResource>
     </ItemGroup>
 
 </Project>

@@ -1,0 +1,56 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:components="using:Mesa.HUM.UI.Desktop.Views.Components">
+
+    <Design.PreviewWith>
+
+        <Border
+            Padding="5">
+
+            <StackPanel
+                Orientation="Vertical"
+                Spacing="5">
+
+                <Button Content="Test" />
+
+                <Button>
+
+                    <Button.Content>
+
+                        <StackPanel
+                            Orientation="Horizontal"
+                            Spacing="5">
+
+                            <PathIcon
+                                Data="{StaticResource Missing}" />
+
+                            <Label
+                                Content="Test" />
+
+                        </StackPanel>
+
+                    </Button.Content>
+
+                </Button>
+
+            </StackPanel>
+
+        </Border>
+
+    </Design.PreviewWith>
+
+    <Style Selector="Button">
+
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Padding" Value="5" />
+
+    </Style>
+
+    <Style
+        Selector="components|CustomButton">
+
+        <Setter Property="Cursor" Value="Hand" />
+
+    </Style>
+
+</Styles>
