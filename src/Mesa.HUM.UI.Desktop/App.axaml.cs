@@ -1,6 +1,7 @@
 namespace Mesa.HUM.UI.Desktop
 {
     using Avalonia;
+    using Avalonia.Controls;
     using Avalonia.Controls.ApplicationLifetimes;
     using Avalonia.Markup.Xaml;
     using Mesa.HUM.Application.ExtensionMethods.HostBuilder;
@@ -22,6 +23,13 @@ namespace Mesa.HUM.UI.Desktop
 
         public override void OnFrameworkInitializationCompleted ( )
         {
+            if ( Design.IsDesignMode )
+            {
+                base.OnFrameworkInitializationCompleted ( );
+
+                return;
+            }
+
             _host = Host.CreateDefaultBuilder ( )
                 .RegisterDesktopUIDependencies ( )
                 .RegisterPresentationDependencies ( )
