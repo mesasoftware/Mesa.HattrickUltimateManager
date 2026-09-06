@@ -13,6 +13,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using TextCopy;
 
     [ExcludeFromCodeCoverage]
     public static class DependencyInjectionExtensionMethods
@@ -23,6 +24,7 @@
                 services
                     .RegisterFacades ( )
                     .RegisterScopesSettings ( context.Configuration )
+                    .RegisterServices ( )
                     .RegisterStores ( )
                     .RegisterViewModels ( ) );
         }
@@ -41,6 +43,12 @@
             ArgumentNullException.ThrowIfNull ( scopes );
 
             return services.AddSingleton ( scopes );
+        }
+
+        private static IServiceCollection RegisterServices ( this IServiceCollection services )
+        {
+            return services
+                .AddSingleton<IClipboard , Clipboard> ( );
         }
 
         private static IServiceCollection RegisterStores ( this IServiceCollection services )

@@ -15,6 +15,7 @@
     using Mesa.HUM.Presentation.ViewModels.Pages.Enums;
     using Mesa.HUM.Tests.Shared.Helpers;
     using Moq;
+    using TextCopy;
 
     public class UserProfileAuthorizationViewModelTests
     {
@@ -38,6 +39,7 @@
                 // Arrange & Act.
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
+                    new Mock<IClipboard> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
                     new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
@@ -67,6 +69,7 @@
 
                 var sut = new UserProfileAuthorizationViewModel (
                     authorizationFacadeMock.Object ,
+                    new Mock<IClipboard> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
                     new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
@@ -108,6 +111,7 @@
 
                 var sut = new UserProfileAuthorizationViewModel (
                     authorizationFacadeMock.Object ,
+                    new Mock<IClipboard> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
                     new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
@@ -156,6 +160,7 @@
 
                 var sut = new UserProfileAuthorizationViewModel (
                     authorizationFacadeMock.Object ,
+                    new Mock<IClipboard> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
                     new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
@@ -190,6 +195,7 @@
                 // Arrange.
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
+                    new Mock<IClipboard> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
                     new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
@@ -216,6 +222,7 @@
                 // Arrange.
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
+                    new Mock<IClipboard> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
                     new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
@@ -253,6 +260,7 @@
 
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
+                    new Mock<IClipboard> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
                     new Mock<INotificationsStore> ( ).Object ,
                     userProfileStoreMock.Object ,
@@ -279,6 +287,7 @@
 
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
+                    new Mock<IClipboard> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
                     new Mock<INotificationsStore> ( ).Object ,
                     userProfileStoreMock.Object ,
@@ -311,6 +320,7 @@
 
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
+                    new Mock<IClipboard> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
                     new Mock<INotificationsStore> ( ).Object ,
                     userProfileStoreMock.Object ,
@@ -331,6 +341,7 @@
                 // Arrange.
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
+                    new Mock<IClipboard> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
                     new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
@@ -360,6 +371,7 @@
                 // Arrange.
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
+                    new Mock<IClipboard> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
                     new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
@@ -386,6 +398,7 @@
                     // Arrange.
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
+                        new Mock<IClipboard> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
                         new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
@@ -407,6 +420,7 @@
                     // Arrange.
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
+                        new Mock<IClipboard> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
                         new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
@@ -450,6 +464,7 @@
                     // Arrange.
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
+                        new Mock<IClipboard> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
                         new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
@@ -496,6 +511,7 @@
                     // Arrange.
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
+                        new Mock<IClipboard> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
                         new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
@@ -517,6 +533,7 @@
                     // Arrange.
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
+                        new Mock<IClipboard> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
                         new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
@@ -560,6 +577,7 @@
                     // Arrange.
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
+                        new Mock<IClipboard> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
                         new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
@@ -606,6 +624,7 @@
                     // Arrange.
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
+                        new Mock<IClipboard> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
                         new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
@@ -627,6 +646,7 @@
                     // Arrange.
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
+                        new Mock<IClipboard> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
                         new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
@@ -670,6 +690,7 @@
                     // Arrange.
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
+                        new Mock<IClipboard> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
                         new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
@@ -716,6 +737,7 @@
                     // Arrange.
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
+                        new Mock<IClipboard> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
                         new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
@@ -760,6 +782,7 @@
                     // Arrange.
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
+                        new Mock<IClipboard> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
                         new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,

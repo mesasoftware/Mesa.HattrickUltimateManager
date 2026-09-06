@@ -15,12 +15,15 @@
     using Mesa.HUM.Presentation.ViewModels.Abstractions.Interfaces;
     using Mesa.HUM.Presentation.ViewModels.Components.UserProfiles;
     using Mesa.HUM.Presentation.ViewModels.Pages.Enums;
+    using TextCopy;
 
     public sealed class UserProfileAuthorizationViewModel : PageViewModelBase, IInitializableViewModel
     {
         private readonly IAuthorizationFacade _authorizationFacade;
 
         private readonly CancellationTokenSource _cancellationTokenSource;
+
+        private readonly IClipboard _clipboard;
 
         private readonly ILinkLauncher _linkLauncher;
 
@@ -34,12 +37,14 @@
 
         public UserProfileAuthorizationViewModel (
             IAuthorizationFacade authorizationFacade ,
+            IClipboard clipboard ,
             ILinkLauncher linkLauncher ,
             INotificationsStore notificationStore ,
             IUserProfileStore userProfileStore ,
             Scope [ ] scopes )
         {
             _authorizationFacade = authorizationFacade;
+            _clipboard = clipboard;
             _linkLauncher = linkLauncher;
             _notificationStore = notificationStore;
             _userProfileStore = userProfileStore;
@@ -124,7 +129,7 @@
 
             if ( !string.IsNullOrWhiteSpace ( _authorizationUrl ) && _requestToken is not null )
             {
-                await TextCopy.ClipboardService.SetTextAsync ( _authorizationUrl );
+                await _clipboard.SetTextAsync ( _authorizationUrl );
 
                 Stage = UserProfileAuthorizationStage.Complete;
             }
