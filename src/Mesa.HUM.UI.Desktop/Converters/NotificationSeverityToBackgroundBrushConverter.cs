@@ -5,7 +5,7 @@ namespace Mesa.HUM.UI.Desktop.Converters
     using Avalonia;
     using Avalonia.Data.Converters;
     using Avalonia.Media;
-    using Mesa.HUM.Presentation.Stores.Contracts;
+    using Mesa.HUM.Presentation.Stores.Enums;
 
     internal class NotificationSeverityToBackgroundBrushConverter : IValueConverter
     {

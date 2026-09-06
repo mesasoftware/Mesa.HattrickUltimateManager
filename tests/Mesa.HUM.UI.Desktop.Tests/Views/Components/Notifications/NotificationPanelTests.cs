@@ -1,4 +1,4 @@
-namespace Mesa.HUM.UI.Desktop.Tests.Views.Components
+namespace Mesa.HUM.UI.Desktop.Tests.Views.Components.Notifications
 {
     using System;
     using System.Linq;
@@ -8,17 +8,18 @@ namespace Mesa.HUM.UI.Desktop.Tests.Views.Components
     using Avalonia.VisualTree;
     using Mesa.HUM.Presentation.Abstractions.Interfaces;
     using Mesa.HUM.Presentation.Stores;
-    using Mesa.HUM.Presentation.Stores.Contracts;
-    using Mesa.HUM.UI.Desktop.Views.Components;
+    using Mesa.HUM.Presentation.Stores.Enums;
+    using Mesa.HUM.Presentation.ViewModels.Components.Notifications;
+    using Mesa.HUM.UI.Desktop.Views.Components.Notifications;
     using Moq;
 
     public class NotificationPanelTests
     {
-        private static NotificationPanel CreateShownPanel ( NotificationStore store )
+        private static NotificationPanel CreateShownPanel ( NotificationsStore store )
         {
             var sut = new NotificationPanel
             {
-                DataContext = store
+                DataContext = new NotificationsPanelViewModel ( store )
             };
 
             var window = new Window
@@ -35,9 +36,9 @@ namespace Mesa.HUM.UI.Desktop.Tests.Views.Components
             return sut;
         }
 
-        private static NotificationStore CreateStore ( )
+        private static NotificationsStore CreateStore ( )
         {
-            return new NotificationStore ( Mock.Of<IUIDispatcher> ( ) );
+            return new NotificationsStore ( Mock.Of<IUIDispatcher> ( ) );
         }
 
         public class ConstructorTests
@@ -93,7 +94,7 @@ namespace Mesa.HUM.UI.Desktop.Tests.Views.Components
                 var sut = CreateShownPanel ( store );
 
                 // Assert.
-                var messages = sut.GetVisualDescendants ( )
+                string? [ ] messages = sut.GetVisualDescendants ( )
                     .OfType<TextBlock> ( )
                     .Select ( x => x.Text )
                     .ToArray ( );

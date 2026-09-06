@@ -7,6 +7,7 @@
     using Mesa.HUM.Presentation.Facades.Interfaces;
     using Mesa.HUM.Presentation.Stores;
     using Mesa.HUM.Presentation.Stores.Interfaces;
+    using Mesa.HUM.Presentation.ViewModels.Components.Notifications;
     using Mesa.HUM.Presentation.ViewModels.Pages;
     using Mesa.HUM.Presentation.ViewModels.Windows;
     using Microsoft.Extensions.Configuration;
@@ -46,13 +47,14 @@
         {
             return services
                 .AddSingleton<IUserProfileStore , UserProfileStore> ( )
-                .AddSingleton<INotificationStore , NotificationStore> ( );
+                .AddSingleton<INotificationsStore , NotificationsStore> ( );
         }
 
         private static IServiceCollection RegisterViewModels ( this IServiceCollection services )
         {
             return services
                 .AddScoped<MainWindowViewModel> ( )
+                .AddSingleton<NotificationsPanelViewModel> ( )
                 .AddScoped<UserProfileAuthorizationViewModel> ( );
         }
     }

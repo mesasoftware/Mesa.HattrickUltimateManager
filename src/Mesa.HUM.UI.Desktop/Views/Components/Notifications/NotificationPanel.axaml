@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:comp="using:Mesa.HUM.UI.Desktop.Views.Components.Notifications"
+             xmlns:contracts="using:Mesa.HUM.Presentation.Stores.Contracts"
+             xmlns:vm="using:Mesa.HUM.Presentation.ViewModels.Components.Notifications"
+             mc:Ignorable="d"
+             d:DesignWidth="360"
+             d:DesignHeight="200"
+             x:Class="Mesa.HUM.UI.Desktop.Views.Components.Notifications.NotificationPanel"
+             x:DataType="vm:NotificationsPanelViewModel">
+
+    <!-- Notification overlay -->
+    <ItemsControl
+        HorizontalAlignment="Right"
+        ItemsSource="{Binding Store.Notifications}"
+        Margin="16"
+        MaxWidth="500"
+        VerticalAlignment="Bottom">
+
+        <ItemsControl.ItemsPanel>
+
+            <ItemsPanelTemplate>
+
+                <StackPanel
+                    Orientation="Vertical"
+                    Spacing="5" />
+
+            </ItemsPanelTemplate>
+
+        </ItemsControl.ItemsPanel>
+
+        <ItemsControl.ItemTemplate>
+
+            <DataTemplate x:DataType="contracts:NotificationModel">
+
+                <comp:NotificationToast DataContext="{Binding}" />
+
+            </DataTemplate>
+
+        </ItemsControl.ItemTemplate>
+
+    </ItemsControl>
+
+</UserControl>

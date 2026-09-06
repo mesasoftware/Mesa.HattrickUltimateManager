@@ -1,4 +1,4 @@
-namespace Mesa.HUM.UI.Desktop.Views.Components
+namespace Mesa.HUM.UI.Desktop.Views.Components.Notifications
 {
     using Avalonia.Controls;
 

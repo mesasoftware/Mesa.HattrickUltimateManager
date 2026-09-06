@@ -1,15 +1,15 @@
 ﻿namespace Mesa.HUM.Presentation.ViewModels.Windows
 {
-    using Mesa.HUM.Presentation.Stores.Interfaces;
     using Mesa.HUM.Presentation.ViewModels.Abstractions;
     using Mesa.HUM.Presentation.ViewModels.Abstractions.Interfaces;
+    using Mesa.HUM.Presentation.ViewModels.Components.Notifications;
     using Mesa.HUM.Presentation.ViewModels.Pages;
 
     public sealed class MainWindowViewModel : WindowViewModelBase
     {
-        public MainWindowViewModel ( UserProfileAuthorizationViewModel childViewModel , INotificationStore notificationStore )
+        public MainWindowViewModel ( UserProfileAuthorizationViewModel childViewModel , NotificationsPanelViewModel notificationsPanelViewModel )
         {
-            Notifications = notificationStore;
+            NotificationsPanel = notificationsPanelViewModel;
 
             ChildViewModel = childViewModel;
 
@@ -23,8 +23,8 @@
             }
         }
 
-        public PageViewModelBase ChildViewModel { get; set; }
+        public PageViewModelBase ChildViewModel { get; }
 
-        public INotificationStore Notifications { get; }
+        public NotificationsPanelViewModel NotificationsPanel { get; }
     }
 }

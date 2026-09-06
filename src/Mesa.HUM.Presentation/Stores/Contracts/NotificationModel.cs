@@ -1,9 +1,6 @@
 namespace Mesa.HUM.Presentation.Stores.Contracts
 {
-    public sealed class NotificationModel ( string message , NotificationSeverity severity )
-    {
-        public string Message { get; } = message;
+    using Mesa.HUM.Presentation.Stores.Enums;
 
-        public NotificationSeverity Severity { get; } = severity;
-    }
+    public sealed record NotificationModel ( string Message , NotificationSeverity Severity );
 }

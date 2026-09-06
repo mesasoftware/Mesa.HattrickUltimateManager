@@ -4,7 +4,7 @@ namespace Mesa.HUM.UI.Desktop.Converters
     using System.Globalization;
     using Avalonia;
     using Avalonia.Data.Converters;
-    using Mesa.HUM.Presentation.Stores.Contracts;
+    using Mesa.HUM.Presentation.Stores.Enums;
 
     internal class NotificationSeverityToIconConverter : IValueConverter
     {

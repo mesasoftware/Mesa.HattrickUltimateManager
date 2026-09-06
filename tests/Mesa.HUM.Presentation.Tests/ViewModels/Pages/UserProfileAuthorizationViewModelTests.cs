@@ -39,7 +39,7 @@
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
-                    new Mock<INotificationStore> ( ).Object ,
+                    new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
                     GetScopes ( ) );
 
@@ -68,7 +68,7 @@
                 var sut = new UserProfileAuthorizationViewModel (
                     authorizationFacadeMock.Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
-                    new Mock<INotificationStore> ( ).Object ,
+                    new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
                     GetScopes ( ) );
 
@@ -109,7 +109,7 @@
                 var sut = new UserProfileAuthorizationViewModel (
                     authorizationFacadeMock.Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
-                    new Mock<INotificationStore> ( ).Object ,
+                    new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
                     GetScopes ( ) );
 
@@ -157,7 +157,7 @@
                 var sut = new UserProfileAuthorizationViewModel (
                     authorizationFacadeMock.Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
-                    new Mock<INotificationStore> ( ).Object ,
+                    new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
                     GetScopes ( ) );
 
@@ -191,7 +191,7 @@
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
-                    new Mock<INotificationStore> ( ).Object ,
+                    new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
                     GetScopes ( ) );
 
@@ -217,7 +217,7 @@
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
-                    new Mock<INotificationStore> ( ).Object ,
+                    new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
                     GetScopes ( ) );
 
@@ -254,7 +254,7 @@
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
-                    new Mock<INotificationStore> ( ).Object ,
+                    new Mock<INotificationsStore> ( ).Object ,
                     userProfileStoreMock.Object ,
                     GetScopes ( ) );
 
@@ -280,7 +280,7 @@
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
-                    new Mock<INotificationStore> ( ).Object ,
+                    new Mock<INotificationsStore> ( ).Object ,
                     userProfileStoreMock.Object ,
                     GetScopes ( ) );
 
@@ -312,7 +312,7 @@
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
-                    new Mock<INotificationStore> ( ).Object ,
+                    new Mock<INotificationsStore> ( ).Object ,
                     userProfileStoreMock.Object ,
                     GetScopes ( ) );
 
@@ -332,7 +332,7 @@
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
-                    new Mock<INotificationStore> ( ).Object ,
+                    new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
                     GetScopes ( ) );
 
@@ -361,7 +361,7 @@
                 var sut = new UserProfileAuthorizationViewModel (
                     new Mock<IAuthorizationFacade> ( ).Object ,
                     new Mock<ILinkLauncher> ( ).Object ,
-                    new Mock<INotificationStore> ( ).Object ,
+                    new Mock<INotificationsStore> ( ).Object ,
                     new Mock<IUserProfileStore> ( ).Object ,
                     GetScopes ( ) );
 
@@ -387,7 +387,7 @@
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
-                        new Mock<INotificationStore> ( ).Object ,
+                        new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
                         GetScopes ( ) );
 
@@ -408,7 +408,7 @@
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
-                        new Mock<INotificationStore> ( ).Object ,
+                        new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
                         GetScopes ( ) );
 
@@ -451,7 +451,7 @@
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
-                        new Mock<INotificationStore> ( ).Object ,
+                        new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
                         GetScopes ( ) );
 
@@ -497,7 +497,7 @@
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
-                        new Mock<INotificationStore> ( ).Object ,
+                        new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
                         GetScopes ( ) );
 
@@ -518,7 +518,7 @@
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
-                        new Mock<INotificationStore> ( ).Object ,
+                        new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
                         GetScopes ( ) );
 
@@ -561,7 +561,7 @@
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
-                        new Mock<INotificationStore> ( ).Object ,
+                        new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
                         GetScopes ( ) );
 
@@ -607,7 +607,7 @@
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
-                        new Mock<INotificationStore> ( ).Object ,
+                        new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
                         GetScopes ( ) );
 
@@ -628,7 +628,7 @@
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
-                        new Mock<INotificationStore> ( ).Object ,
+                        new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
                         GetScopes ( ) );
 
@@ -671,7 +671,7 @@
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
-                        new Mock<INotificationStore> ( ).Object ,
+                        new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
                         GetScopes ( ) );
 
@@ -717,7 +717,7 @@
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
-                        new Mock<INotificationStore> ( ).Object ,
+                        new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
                         GetScopes ( ) );
 
@@ -761,7 +761,7 @@
                     var sut = new UserProfileAuthorizationViewModel (
                         new Mock<IAuthorizationFacade> ( ).Object ,
                         new Mock<ILinkLauncher> ( ).Object ,
-                        new Mock<INotificationStore> ( ).Object ,
+                        new Mock<INotificationsStore> ( ).Object ,
                         new Mock<IUserProfileStore> ( ).Object ,
                         GetScopes ( ) );
 

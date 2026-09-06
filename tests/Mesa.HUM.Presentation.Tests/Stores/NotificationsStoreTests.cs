@@ -6,25 +6,13 @@ namespace Mesa.HUM.Presentation.Tests.Stores
     using Mesa.HUM.Presentation.Abstractions.Interfaces;
     using Mesa.HUM.Presentation.Stores;
     using Mesa.HUM.Presentation.Stores.Contracts;
+    using Mesa.HUM.Presentation.Stores.Enums;
     using Moq;
 
-    public class NotificationStoreTests
+    public class NotificationsStoreTests
     {
         public class ConstructorTests
         {
-            [Fact]
-            public void Constructor_DismissCommand_ShouldNotBeNull ( )
-            {
-                // Arrange.
-                var dispatcherMock = new Mock<IUIDispatcher> ( );
-
-                // Act.
-                var sut = new NotificationStore ( dispatcherMock.Object );
-
-                // Assert.
-                Assert.NotNull ( sut.DismissCommand );
-            }
-
             [Fact]
             public void Constructor_ShouldInitializeEmptyNotifications ( )
             {
@@ -32,63 +20,63 @@ namespace Mesa.HUM.Presentation.Tests.Stores
                 var dispatcherMock = new Mock<IUIDispatcher> ( );
 
                 // Act.
-                var sut = new NotificationStore ( dispatcherMock.Object );
+                var sut = new NotificationsStore ( dispatcherMock.Object );
 
                 // Assert.
                 Assert.Empty ( sut.Notifications );
             }
         }
 
-        public class DismissCommandTests
+        public class DismissTests
         {
             [Fact]
-            public void DismissCommand_GivenExistingNotification_ShouldRemoveIt ( )
+            public void Dismiss_GivenExistingNotification_ShouldRemoveIt ( )
             {
                 // Arrange.
                 var dispatcherMock = new Mock<IUIDispatcher> ( );
 
-                var sut = new NotificationStore ( dispatcherMock.Object );
+                var sut = new NotificationsStore ( dispatcherMock.Object );
 
                 sut.Notify ( "Message" , NotificationSeverity.Information , TimeSpan.Zero );
 
                 var notification = sut.Notifications.Single ( );
 
                 // Act.
-                sut.DismissCommand.Execute ( notification );
+                sut.Dismiss ( notification );
 
                 // Assert.
                 Assert.Empty ( sut.Notifications );
             }
 
             [Fact]
-            public void DismissCommand_GivenNull_ShouldNotThrow ( )
+            public void Dismiss_GivenNull_ShouldNotThrow ( )
             {
                 // Arrange.
                 var dispatcherMock = new Mock<IUIDispatcher> ( );
 
-                var sut = new NotificationStore ( dispatcherMock.Object );
+                var sut = new NotificationsStore ( dispatcherMock.Object );
 
                 // Act.
-                var actual = Record.Exception ( ( ) => sut.DismissCommand.Execute ( null ) );
+                var actual = Record.Exception ( ( ) => sut.Dismiss ( null ) );
 
                 // Assert.
                 Assert.Null ( actual );
             }
 
             [Fact]
-            public void DismissCommand_GivenUnknownNotification_ShouldNotChangeNotifications ( )
+            public void Dismiss_GivenUnknownNotification_ShouldNotChangeNotifications ( )
             {
                 // Arrange.
                 var dispatcherMock = new Mock<IUIDispatcher> ( );
 
-                var sut = new NotificationStore ( dispatcherMock.Object );
+                var sut = new NotificationsStore ( dispatcherMock.Object );
 
                 sut.Notify ( "Existing" , NotificationSeverity.Information , TimeSpan.Zero );
 
                 var unknown = new NotificationModel ( "Unknown" , NotificationSeverity.Error );
 
                 // Act.
-                sut.DismissCommand.Execute ( unknown );
+                sut.Dismiss ( unknown );
 
                 // Assert.
                 Assert.Single ( sut.Notifications );
@@ -97,13 +85,32 @@ namespace Mesa.HUM.Presentation.Tests.Stores
 
         public class NotifyTests
         {
+            [Theory]
+            [InlineData ( "" )]
+            [InlineData ( " " )]
+            public void Notify_GivenEmptyOrWhiteSpaceMessage_ShouldThrowArgumentException ( string? message )
+            {
+                // Arrange.
+                var dispatcherMock = new Mock<IUIDispatcher> ( );
+
+                var sut = new NotificationsStore ( dispatcherMock.Object );
+
+                // Act.
+                var actual = Record.Exception ( ( ) => sut.Notify ( message! , NotificationSeverity.Information , TimeSpan.Zero ) );
+
+                // Assert.
+                Assert.NotNull ( actual );
+                var exception = Assert.IsType<ArgumentException> ( actual );
+                Assert.Equal ( "message" , exception.ParamName );
+            }
+
             [Fact]
             public void Notify_GivenMessageAndSeverity_ShouldAddNotification ( )
             {
                 // Arrange.
                 var dispatcherMock = new Mock<IUIDispatcher> ( );
 
-                var sut = new NotificationStore ( dispatcherMock.Object );
+                var sut = new NotificationsStore ( dispatcherMock.Object );
 
                 // Act.
                 sut.Notify ( "Message" , NotificationSeverity.Error , TimeSpan.Zero );
@@ -115,38 +122,37 @@ namespace Mesa.HUM.Presentation.Tests.Stores
             }
 
             [Fact]
-            public void Notify_GivenNoSeverity_ShouldDefaultToInformation ( )
+            public void Notify_GivenNoDuration_ShouldScheduleDismissalUsingDefaultDuration ( )
             {
                 // Arrange.
                 var dispatcherMock = new Mock<IUIDispatcher> ( );
 
-                var sut = new NotificationStore ( dispatcherMock.Object );
+                var sut = new NotificationsStore ( dispatcherMock.Object );
 
                 // Act.
-                sut.Notify ( "Message" , duration: TimeSpan.Zero );
+                sut.Notify ( "Message" , NotificationSeverity.Information );
 
                 // Assert.
-                var notification = Assert.Single ( sut.Notifications );
-                Assert.Equal ( NotificationSeverity.Information , notification.Severity );
+                // The default duration is positive, so the notification is added and left in place
+                // (dismissal is scheduled for later rather than applied synchronously).
+                Assert.Single ( sut.Notifications );
+                dispatcherMock.Verify ( x => x.Post ( It.IsAny<Action> ( ) ) , Times.Never );
             }
 
-            [Theory]
-            [InlineData ( null )]
-            [InlineData ( "" )]
-            [InlineData ( " " )]
-            public void Notify_GivenNullOrWhiteSpaceMessage_ShouldThrowArgumentException ( string? message )
+            [Fact]
+            public void Notify_GivenNullMessage_ShouldThrowArgumentException ( )
             {
                 // Arrange.
                 var dispatcherMock = new Mock<IUIDispatcher> ( );
 
-                var sut = new NotificationStore ( dispatcherMock.Object );
+                var sut = new NotificationsStore ( dispatcherMock.Object );
 
                 // Act.
-                var actual = Record.Exception ( ( ) => sut.Notify ( message! , NotificationSeverity.Information , TimeSpan.Zero ) );
+                var actual = Record.Exception ( ( ) => sut.Notify ( null! , NotificationSeverity.Information , TimeSpan.Zero ) );
 
                 // Assert.
                 Assert.NotNull ( actual );
-                var exception = Assert.IsAssignableFrom<ArgumentException> ( actual );
+                var exception = Assert.IsType<ArgumentNullException> ( actual );
                 Assert.Equal ( "message" , exception.ParamName );
             }
 
@@ -166,7 +172,7 @@ namespace Mesa.HUM.Presentation.Tests.Stores
                         completion.TrySetResult ( );
                     } );
 
-                var sut = new NotificationStore ( dispatcherMock.Object );
+                var sut = new NotificationsStore ( dispatcherMock.Object );
 
                 // Act.
                 sut.Notify ( "Message" , NotificationSeverity.Information , TimeSpan.FromMilliseconds ( 1 ) );
@@ -183,7 +189,7 @@ namespace Mesa.HUM.Presentation.Tests.Stores
                 // Arrange.
                 var dispatcherMock = new Mock<IUIDispatcher> ( );
 
-                var sut = new NotificationStore ( dispatcherMock.Object );
+                var sut = new NotificationsStore ( dispatcherMock.Object );
 
                 // Act.
                 sut.Notify ( "Message" , NotificationSeverity.Information , TimeSpan.Zero );

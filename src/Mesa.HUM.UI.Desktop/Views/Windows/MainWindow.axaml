@@ -1,6 +1,6 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:components="using:Mesa.HUM.UI.Desktop.Views.Components"
+        xmlns:notiComp="using:Mesa.HUM.UI.Desktop.Views.Components.Notifications"
         xmlns:vm="using:Mesa.HUM.Presentation.ViewModels.Windows"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -69,8 +69,8 @@
 
         </SplitView>
 
-        <!-- Toast notifications overlay -->
-        <components:NotificationPanel DataContext="{Binding Notifications}" />
+        <!-- Notifications panel -->
+        <notiComp:NotificationPanel DataContext="{Binding NotificationsPanel}" />
 
     </Panel>
 

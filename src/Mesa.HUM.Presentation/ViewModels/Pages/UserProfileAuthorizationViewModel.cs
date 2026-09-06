@@ -9,7 +9,7 @@
     using Mesa.HUM.Presentation.Contracts;
     using Mesa.HUM.Presentation.Facades.Contracts.Authorization;
     using Mesa.HUM.Presentation.Facades.Interfaces;
-    using Mesa.HUM.Presentation.Stores.Contracts;
+    using Mesa.HUM.Presentation.Stores.Enums;
     using Mesa.HUM.Presentation.Stores.Interfaces;
     using Mesa.HUM.Presentation.ViewModels.Abstractions;
     using Mesa.HUM.Presentation.ViewModels.Abstractions.Interfaces;
@@ -24,7 +24,7 @@
 
         private readonly ILinkLauncher _linkLauncher;
 
-        private readonly INotificationStore _notificationStore;
+        private readonly INotificationsStore _notificationStore;
 
         private readonly IUserProfileStore _userProfileStore;
 
@@ -35,7 +35,7 @@
         public UserProfileAuthorizationViewModel (
             IAuthorizationFacade authorizationFacade ,
             ILinkLauncher linkLauncher ,
-            INotificationStore notificationStore ,
+            INotificationsStore notificationStore ,
             IUserProfileStore userProfileStore ,
             Scope [ ] scopes )
         {

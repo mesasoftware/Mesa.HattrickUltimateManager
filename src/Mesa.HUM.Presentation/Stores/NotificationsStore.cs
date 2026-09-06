@@ -3,13 +3,13 @@ namespace Mesa.HUM.Presentation.Stores
     using System;
     using System.Collections.ObjectModel;
     using System.Threading.Tasks;
-    using CommunityToolkit.Mvvm.Input;
     using Mesa.HUM.Presentation.Abstractions;
     using Mesa.HUM.Presentation.Abstractions.Interfaces;
     using Mesa.HUM.Presentation.Stores.Contracts;
+    using Mesa.HUM.Presentation.Stores.Enums;
     using Mesa.HUM.Presentation.Stores.Interfaces;
 
-    public sealed class NotificationStore : ObservableComponent, INotificationStore
+    public sealed class NotificationsStore : ObservableComponent, INotificationsStore
     {
         private static readonly TimeSpan DefaultDuration = TimeSpan.FromSeconds ( 3 );
 
@@ -17,20 +17,25 @@ namespace Mesa.HUM.Presentation.Stores
 
         private readonly ObservableCollection<NotificationModel> _notifications;
 
-        public NotificationStore ( IUIDispatcher dispatcher )
+        public NotificationsStore ( IUIDispatcher dispatcher )
         {
             _dispatcher = dispatcher;
             _notifications = [ ];
 
             Notifications = new ReadOnlyObservableCollection<NotificationModel> ( _notifications );
-            DismissCommand = new RelayCommand<NotificationModel> ( Dismiss );
         }
-
-        public IRelayCommand<NotificationModel> DismissCommand { get; }
 
         public ReadOnlyObservableCollection<NotificationModel> Notifications { get; }
 
-        public void Notify ( string message , NotificationSeverity severity = NotificationSeverity.Information , TimeSpan? duration = null )
+        public void Dismiss ( NotificationModel? notification )
+        {
+            if ( notification is not null )
+            {
+                _notifications.Remove ( notification );
+            }
+        }
+
+        public void Notify ( string message , NotificationSeverity severity , TimeSpan? duration = null )
         {
             ArgumentException.ThrowIfNullOrWhiteSpace ( message );
 
@@ -47,14 +52,6 @@ namespace Mesa.HUM.Presentation.Stores
                 _ = Task
                     .Delay ( lifetime )
                     .ContinueWith ( _ => _dispatcher.Post ( ( ) => Dismiss ( notification ) ) );
-            }
-        }
-
-        private void Dismiss ( NotificationModel? notification )
-        {
-            if ( notification is not null )
-            {
-                _notifications.Remove ( notification );
             }
         }
     }

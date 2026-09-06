@@ -1,6 +1,7 @@
 namespace Mesa.HUM.Presentation.Tests.Stores.Contracts
 {
     using Mesa.HUM.Presentation.Stores.Contracts;
+    using Mesa.HUM.Presentation.Stores.Enums;
 
     public class NotificationModelTests
     {
